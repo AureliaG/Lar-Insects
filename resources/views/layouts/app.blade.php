@@ -70,6 +70,15 @@
                 </div>
             </div>
         </nav>
+        
+        <div class="panel-body">
+            @if (session('status'))
+                <div class="alert alert-success" style="border: 1px solid #7bd88f; text-align: center; margin-left:10px; margin-right: 10px">
+                    {{ session('status') }}
+                    Vous êtes enregistré !
+                </div>
+            @endif
+        </div>
 
         @yield('content')
     </div>
