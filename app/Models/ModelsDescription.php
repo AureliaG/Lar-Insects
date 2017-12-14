@@ -6,9 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class ModelsDescription extends Model
 {
+    protected $table = 'models_descriptions';
+
     protected $fillable= [
-    'slug','age','famille','race','nourriture','name'
+    'slug','age','tribu','race','nourriture','name'
     ];
 
-    
+    function user() {
+      return $this->belongsTo('App\Models\User');
+    }
+
+
 }

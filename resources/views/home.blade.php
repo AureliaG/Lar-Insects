@@ -14,36 +14,36 @@
                       </div>
                   @endif
 
-                  
-                  <form method="POST">
+
+                  <form method="GET" action="{{ route('form.info') }}">
                     <div class="form-group">
                           <label>Nom</label>
-                          <input type="text" class="form-control" placeholder="Nom">
+                          <input type="text" class="form-control" name="name" placeholder="Nom">
                         </div>
 
                         <div class="form-group">
                           <label>Tribu</label>
-                          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: Tic et Tac">
+                          <input type="text" class="form-control" name="tribu" id="exampleInputPassword1" placeholder="ex: Tic et Tac">
                         </div>
 
                         <div class="form-group">
                           <label>Race</label>
-                          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: fourmis">
+                          <input type="text" class="form-control" name="race" id="exampleInputPassword1" placeholder="ex: fourmis">
                         </div>
-                        
+
                         <div class="form-group">
                           <label>Date de naissance</label>
-                          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: 12/12/2017">
+                          <input type="text" class="form-control" name="age" id="exampleInputPassword1" placeholder="ex: 12/12/2017">
                         </div>
-                    
+
                         <div class="form-group">
                           <label>Nourriture</label>
-                          <select class="form-control">
-                            <option>Pucerons</option>
-                            <option>Plante</option>
-                            <option>Herbe</option>
-                            <option>Maïs</option>
-                            <option>Moucherons</option>
+                          <select class="form-control" name="nourriture">
+                            <option value="Pucerons">Pucerons</option>
+                            <option value="Plante">Plante</option>
+                            <option value="Herbe">Herbe</option>
+                            <option value="Maïs">Maïs</option>
+                            <option value="Moucherons">Moucherons</option>
                           </select>
                         </div>
 

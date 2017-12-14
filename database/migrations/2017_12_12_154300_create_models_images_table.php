@@ -29,7 +29,7 @@ class CreateModelsImagesTable extends Migration
      */
     public function down()
     {
-     
+
         Schema::dropIfExists('images');
     }
 }
