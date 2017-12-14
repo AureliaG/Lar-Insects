@@ -9,4 +9,6 @@ class Nourriture extends Model
     function user() {
       $this->belongsTo('App\Models\User');
     }
+
+
 }

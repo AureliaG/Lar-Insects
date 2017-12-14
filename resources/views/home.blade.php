@@ -39,11 +39,10 @@
                         <div class="form-group">
                           <label>Nourriture</label>
                           <select class="form-control" name="nourriture">
-                            <option value="Pucerons">Pucerons</option>
-                            <option value="Plante">Plante</option>
-                            <option value="Herbe">Herbe</option>
-                            <option value="Maïs">Maïs</option>
-                            <option value="Moucherons">Moucherons</option>
+                            @foreach($nourritures as $nourriture)
+                            <option value="{{ $nourriture->nourriture }}">{{ $nourriture->nourriture }}</option>
+
+                            @endforeach
                           </select>
                         </div>
 

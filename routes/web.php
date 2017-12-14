@@ -30,3 +30,4 @@ Route::get('/createUserInfo', [
   'as' => 'user.info',
   'middleware' => 'auth'
 ]);
+
