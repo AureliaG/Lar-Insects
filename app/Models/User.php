@@ -32,7 +32,11 @@ class User extends Authenticatable
     }
 
     function nourriture() {
-      $this->belongsTo('App\Models\Nourriture');
+      $this->hasOne('App\Models\Nourriture');
+    }
+
+    function race() {
+      $this->hasOne('App\Models\Race');
     }
 
 }

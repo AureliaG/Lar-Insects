@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUseridToModelsDescriprionsTable extends Migration
+class UpdateTimeInModelsDescriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUseridToModelsDescriprionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('models_descriptions', function (Blueprint $table) {
-            $table->integer('user_id');
+        Schema::table('models_descriptions', function ($table) {
+            $table->date('age')->change();
         });
     }
 
@@ -25,6 +25,6 @@ class AddUseridToModelsDescriprionsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('models_descriptions');
     }
 }

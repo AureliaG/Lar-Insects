@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Mon profil</div>
+                <div class="panel-heading">Bonjour {{ Auth::user()->name }} ! <br> Modifiez votre profil</div>
 
                 <div class="panel-body">
                   @if (session('status'))
@@ -23,12 +23,7 @@
 
                         <div class="form-group">
                           <label>Tribu</label>
-                          <input type="text" class="form-control" name="tribu" id="exampleInputPassword1" placeholder="ex: Tic et Tac">
-                        </div>
-
-                        <div class="form-group">
-                          <label>Race</label>
-                          <input type="text" class="form-control" name="race" id="exampleInputPassword1" placeholder="ex: fourmis">
+                          <input type="text" class="form-control" name="tribu" id="exampleInputPassword1" placeholder="ex: fourmis">
                         </div>
 
                         <div class="form-group">
@@ -37,8 +32,20 @@
                         </div>
 
                         <div class="form-group">
+                          <label>Race</label>
+                          <select class="form-control" name="race">
+
+                            @foreach($races as $race)
+                            <option value="{{ $race->race }}">{{ $race->race }}</option>
+
+                            @endforeach
+                          </select>
+                        </div>
+
+                        <div class="form-group">
                           <label>Nourriture</label>
                           <select class="form-control" name="nourriture">
+
                             @foreach($nourritures as $nourriture)
                             <option value="{{ $nourriture->nourriture }}">{{ $nourriture->nourriture }}</option>
 

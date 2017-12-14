@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnName extends Migration
+class CreateRacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddColumnName extends Migration
      */
     public function up()
     {
-        Schema::table('models_descriptions', function (Blueprint $table) {
-            $table->string('name')->unique();
+        Schema::create('races', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->text('race');
         });
     }
 
@@ -25,8 +27,6 @@ class AddColumnName extends Migration
      */
     public function down()
     {
-        Schema::table('models_descriptions', function (Blueprint $table) {
-            $table->dropColumn('name');
-        });
+        Schema::dropIfExists('races');
     }
 }

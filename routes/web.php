@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
 Route::get('/formsent', [
   'uses' => 'ProfileController@PostInfoForm',
@@ -30,4 +30,13 @@ Route::get('/createUserInfo', [
   'as' => 'user.info',
   'middleware' => 'auth'
 ]);
+
+Route::get('/home', [
+  'uses' => 'HomeController@index',
+  'as' => 'home.modif',
+  'middleware' => 'auth'
+]);
+
+
+
 
