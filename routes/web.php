@@ -24,3 +24,9 @@ Route::get('/formsent', [
   'as' => 'form.info',
   'middleware' => 'auth'
 ]);
+
+Route::get('/createUserInfo', [
+  'uses' => 'ProfileController@createUserInfo',
+  'as' => 'user.info',
+  'middleware' => 'auth'
+]);

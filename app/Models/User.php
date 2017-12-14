@@ -31,4 +31,8 @@ class User extends Authenticatable
       return $this->hasOne('App\Models\ModelsDescription');
     }
 
+    function nourriture() {
+      $this->belongsTo('App\Models\Nourriture');
+    }
+
 }
