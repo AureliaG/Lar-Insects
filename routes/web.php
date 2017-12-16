@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/friends', function () {
+    return view('friends');
+});
+
+Route::get('/friends', [
+  'uses' : 'FriendsController@showAllUsers',
+  'As' : 'friends.showAll',
+  'middleware' : 'auth'
+]);
