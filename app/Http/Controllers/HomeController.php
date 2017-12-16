@@ -29,5 +29,6 @@ class HomeController extends Controller
         $nourritures = Nourriture::All();
 
         return view('home', ['nourritures' => $nourritures], ['races' => $races]);
+
     }
 }

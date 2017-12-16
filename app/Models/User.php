@@ -27,16 +27,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-     function descriptions() {
+    function descriptions() {
       return $this->hasOne('App\Models\ModelsDescription');
     }
 
     function nourriture() {
-      $this->hasOne('App\Models\Nourriture');
+      return $this->hasOne('App\Models\Nourriture');
     }
 
     function race() {
-      $this->hasOne('App\Models\Race');
+      return $this->hasOne('App\Models\Race');
     }
 
 }

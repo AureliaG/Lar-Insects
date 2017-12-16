@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/formsent', [
+Route::post('/formsent', [
   'uses' => 'ProfileController@PostInfoForm',
   'as' => 'form.info',
   'middleware' => 'auth'

@@ -15,7 +15,7 @@
                   @endif
 
 
-                  <form method="GET" action="{{ route('form.info') }}">
+                  <form method="POST" action="{{ route('form.info') }}">
                     <div class="form-group">
                           <label>Nom</label>
                           <input type="text" class="form-control" name="name" placeholder="Nom">
