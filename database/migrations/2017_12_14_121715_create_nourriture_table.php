@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Http\Controllers\NourritureController;
 
-class CreateModelsImagesTable extends Migration
+class CreateNourritureTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +14,10 @@ class CreateModelsImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('models_images', function (Blueprint $table) {
+        Schema::create('nourritures', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('description_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->string('name');
             $table->timestamps();
+            $table->text('nourriture');
         });
     }
 
@@ -29,7 +28,6 @@ class CreateModelsImagesTable extends Migration
      */
     public function down()
     {
-
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('nourritures');
     }
 }

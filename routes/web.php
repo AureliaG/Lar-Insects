@@ -19,6 +19,24 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::post('/formsent', [
+  'uses' => 'ProfileController@PostInfoForm',
+  'as' => 'form.info',
+  'middleware' => 'auth'
+]);
+
+Route::get('/createUserInfo', [
+  'uses' => 'ProfileController@createUserInfo',
+  'as' => 'user.info',
+  'middleware' => 'auth'
+]);
+
+Route::get('/home', [
+  'uses' => 'HomeController@index',
+  'as' => 'home.modif',
+  'middleware' => 'auth'
+]);
+
 Route::get('/friends', function () {
     return view('friends');
 });
@@ -28,3 +46,4 @@ Route::get('/friends', [
   'As' : 'friends.showAll',
   'middleware' : 'auth'
 ]);
+

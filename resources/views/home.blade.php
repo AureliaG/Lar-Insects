@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Mon profil</div>
+                <div class="panel-heading">Bonjour {{ Auth::user()->name }} ! <br> Modifiez votre profil</div>
 
                 <div class="panel-body">
                   @if (session('status'))
@@ -14,36 +14,42 @@
                       </div>
                   @endif
 
-                  
-                  <form method="POST">
+
+                  <form method="POST" action="{{ route('form.info') }}">
                     <div class="form-group">
                           <label>Nom</label>
-                          <input type="text" class="form-control" placeholder="Nom">
+                          <input type="text" class="form-control" name="name" placeholder="Nom">
                         </div>
 
                         <div class="form-group">
                           <label>Tribu</label>
-                          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: Tic et Tac">
+                          <input type="text" class="form-control" name="tribu" id="exampleInputPassword1" placeholder="ex: fourmis">
+                        </div>
+
+                        <div class="form-group">
+                          <label>Date de naissance</label>
+                          <input type="text" class="form-control" name="age" id="exampleInputPassword1" placeholder="ex: 12/12/2017">
                         </div>
 
                         <div class="form-group">
                           <label>Race</label>
-                          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: fourmis">
+                          <select class="form-control" name="race">
+
+                            @foreach($races as $race)
+                            <option value="{{ $race->race }}">{{ $race->race }}</option>
+
+                            @endforeach
+                          </select>
                         </div>
-                        
-                        <div class="form-group">
-                          <label>Date de naissance</label>
-                          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="ex: 12/12/2017">
-                        </div>
-                    
+
                         <div class="form-group">
                           <label>Nourriture</label>
-                          <select class="form-control">
-                            <option>Pucerons</option>
-                            <option>Plante</option>
-                            <option>Herbe</option>
-                            <option>Maïs</option>
-                            <option>Moucherons</option>
+                          <select class="form-control" name="nourriture">
+
+                            @foreach($nourritures as $nourriture)
+                            <option value="{{ $nourriture->nourriture }}">{{ $nourriture->nourriture }}</option>
+
+                            @endforeach
                           </select>
                         </div>
 

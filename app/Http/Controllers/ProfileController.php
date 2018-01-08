@@ -3,92 +3,46 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ModelsDescription;
+use Illuminate\Support\Facades\Auth;
+use DB;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+  public function postInfoForm(Request $request) {
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    $connectedUser= Auth::user()->id;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    $newDesc = ModelsDescription::where('user_id', '=', $connectedUser)->first();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id = null)
-    {
+    $age = date("Y-m-d", strtotime(str_replace('/', '-', $request['age'])));
 
-        $user = User::where('id', $id)->get();
-        return view('user/{id}')->with(['user' => $user]);
+    $newDesc->age = $age;
+    $newDesc->famille = $request['tribu'];
+    $newDesc->race = $request['race'];
+    $newDesc->nourriture = $request['nourriture'];
+    $newDesc->name = $request['name'];
 
+    $newDesc->save();
 
-        // if(Auth::user){
-        //     $userData = User::where('id', $user->id)->get();
+    return redirect()->route('home.modif');
+  }
 
-        //     return view('user/{id}', ['$id' => User::findOrFail($id)]);
-        // }
+  public function createUserInfo(Request $request) {
 
-    }
+    $description = new ModelsDescription();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    $description->age = NULL;
+    $description->famille = NULL;
+    $description->race = NULL;
+    $description->nourriture = NULL;
+    $description->name = NULL;
+    $description->name = NULL;
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    $request->user()->descriptions()->save($description);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    return redirect()->route('home.modif');
+
+  }
+  
 }
