@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/formsent', [
   'uses' => 'ProfileController@PostInfoForm',
@@ -37,6 +37,13 @@ Route::get('/home', [
   'middleware' => 'auth'
 ]);
 
+Route::get('/friends', function () {
+    return view('friends');
+});
 
-
+Route::get('/friends', [
+  'uses' : 'FriendsController@showAllUsers',
+  'As' : 'friends.showAll',
+  'middleware' : 'auth'
+]);
 
